@@ -1,22 +1,6 @@
--- ============================================================
--- Task 1: Create COVID Database Schema
--- ============================================================
--- This script creates the COVID-19 database and three tables:
---   covid_cases  - Stores confirmed cases, deaths, recoveries by country/date
---   covid_deaths - Stores death-related statistics by country/date
---   covid_vaccines - Stores vaccination data by country/date
--- ============================================================
-
--- Create the database
 CREATE DATABASE IF NOT EXISTS covid_db;
-
--- Use the database
 USE covid_db;
 
--- ---------------------------------------------------
--- Table: covid_cases
--- Stores daily confirmed COVID-19 case information
--- ---------------------------------------------------
 CREATE TABLE covid_cases (
     case_id       INT AUTO_INCREMENT PRIMARY KEY,
     country       VARCHAR(100) NOT NULL,
@@ -28,10 +12,6 @@ CREATE TABLE covid_cases (
     UNIQUE KEY unique_country_date (country, report_date)
 );
 
--- ---------------------------------------------------
--- Table: covid_deaths
--- Stores detailed COVID-19 death statistics
--- ---------------------------------------------------
 CREATE TABLE covid_deaths (
     death_id      INT AUTO_INCREMENT PRIMARY KEY,
     country       VARCHAR(100) NOT NULL,
@@ -42,10 +22,6 @@ CREATE TABLE covid_deaths (
     UNIQUE KEY unique_death_country_date (country, report_date)
 );
 
--- ---------------------------------------------------
--- Table: covid_vaccines
--- Stores COVID-19 vaccination administration data
--- ---------------------------------------------------
 CREATE TABLE covid_vaccines (
     vaccine_id        INT AUTO_INCREMENT PRIMARY KEY,
     country           VARCHAR(100) NOT NULL,
@@ -57,6 +33,5 @@ CREATE TABLE covid_vaccines (
     UNIQUE KEY unique_vaccine_country_date (country, report_date)
 );
 
--- Display all tables in the database
 SHOW TABLES;
 
